@@ -1,0 +1,23 @@
+# Map
+host-suffix, ls.apple.com, direct
+host, gs-loc-cn.apple.com, direct
+
+# Music
+host, aod.itunes.apple.com, direct
+host, audio.itunes.apple.com, direct
+host, api.smoot.apple.cn, direct
+host, music.apple.com, direct
+host, mvod.itunes.apple.com, direct
+
+# Store
+user-agent, com.apple.appstored*, direct
+host-suffix, mzstatic.com, direct
+host, iosapps.itunes.apple.com, direct
+host, osxapps.itunes.apple.com, direct
+
+# Update
+host, supportdownload.apple.com, direct
+host, appldnld.apple.com, direct
+host, swcdn.apple.com, direct
+host, apptrailers.itunes.apple.com, direct
+host, updates-http.cdn-apple.com, direct

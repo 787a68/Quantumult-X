@@ -1,0 +1,25 @@
+# Main
+host-suffix, aaplimg.com, Apple-G
+host-suffix, apple.co, Apple-G
+host-suffix, apple.com, Apple-G
+host-suffix, apple.com.cn, Apple-G
+host-suffix, apple-cloudkit.com, Apple-G
+host-suffix, appsto.re, Apple-G
+host-suffix, cdn-apple.com, Apple-G
+host-suffix, icloud.com, Apple-G
+host-suffix, icloud-content.com, Apple-G
+host-suffix, itunes.com, Apple-G
+host-suffix, me.com, Apple-G
+ip-cidr, 17.0.0.0/8, Apple-G
+ip-cidr, 63.92.224.0/19, Apple-G
+ip-cidr, 65.199.22.0/23, Apple-G
+ip-cidr, 139.178.128.0/18, Apple-G
+ip-cidr, 144.178.0.0/19, Apple-G
+ip-cidr, 144.178.36.0/22, Apple-G
+ip-cidr, 144.178.48.0/20, Apple-G
+ip-cidr, 192.35.50.0/24, Apple-G
+ip-cidr, 198.183.17.0/24, Apple-G
+ip-cidr, 205.180.175.0/24, Apple-G
+
+# News
+host-suffix, apple.news, Apple-G

@@ -1,0 +1,24 @@
+hostname = account.wps.cn, claritywallpaper.com, creditcardapp.bankcomm.com, duckduckgo.com, www.google.cn
+
+
+# ClarityWallppr = claritywallpaper.com
+^https?+:\/\/claritywallpaper\.com\/clarity\/api\/special\/queryByCatalogAll url script-response-body Clarity.js
+
+# ConceptisSudoku
+^https?:\/\/mobile\.conceptispuzzles\.com\/catalog_ios\/SudokuV2 url script-response-body ConceptisSudoku.js
+
+# Startpage
+// 使用Startpage搜索引擎 = duckduckgo.com, www.google.com
+^https?+:\/\/duckduckgo\.com\/\?q=(.+?)&t.+ url 302 https://www.startpage.com/do/dsearch?query=$1
+^https?+:\/\/www\.google\.cn\/search\?q=(.+?)&.+ url 302 https://www.startpage.com/do/dsearch?query=$1
+// Startpage主题使用自动深色模式 = www.startpage.com
+^https?+:\/\/www\.startpage\.com\/do\/settings$ url script-response-header Startpage.js
+
+# WPS = account.wps.com, account.wps.cn, 
+^https?+:\/\/account\.wps\.c(?>n|om)\/api\/users\/ url script-response-body WPS.js
+
+# 京东cookie = api.m.jd.com
+^https?+:\/\/api\.m\.jd\.com\/client\.action.+?functionId=signBean url script-request-header JDCookie.js
+
+# 招商银行买单吧 = creditcardapp.bankcomm.com
+^https?+:\/\/creditcardapp\.bankcomm\.com\/mappweb_interaction\/common\/queryGuidePageAds\.do url reject-200

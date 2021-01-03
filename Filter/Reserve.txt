@@ -1,0 +1,10 @@
+# Host
+host, localhost, directip-cidr, 127.0.0.0/8, direct
+
+# Multicast DNS
+host-suffix, local, directip-cidr, 224.0.0.0/3, direct
+
+# Private networkip-cidr, 10.0.0.0/8, direct
+ip-cidr, 100.64.0.0/10, directip-cidr, 172.16.0.0/12, direct
+ip-cidr, 192.0.0.0/24, direct
+ip-cidr, 192.168.0.0/16, directip-cidr, 198.18.0.0/15, direct
