@@ -2,7 +2,7 @@
 节点IP信息查询
 
 [general]
-geo_location_checker=http://ip-api.com/json, https://raw.githubusercontent.com/787a68/Self/main/Quantumult-X/Script/Lookup.js
+geo_location_checker=http://ip-api.com/json/, https://raw.githubusercontent.com/787a68/Self/main/Quantumult-X/Script/Lookup.js
 geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/787a68/Self/main/Quantumult-X/Script/Lookup.js
 
 */
@@ -40,7 +40,7 @@ if (body.status == "success") {
     "Organization: " + body.org + "\n\n" +
     "ISP: " + body.isp + "\n\n" +
     "AS: " + body.as;
-  var description = check2(check(info)).replace(/\n\w+:\s\n/g, "");
+  var description = check2(check(info)).replace(/\n\w+?:\s\n/g, "");
   $done({ title, subtitle, ip, description });
 } else {
   $done();
