@@ -3,7 +3,7 @@
 
 [general]
 geo_location_checker=http://ip-api.com/json, https://raw.githubusercontent.com/787a68/Self/main/Quantumult-X/Script/Lookup.js
-geo_location_checker=http://ip-api.com/json/?zh-CN, https://raw.githubusercontent.com/787a68/Self/main/Quantumult-X/Script/Lookup.js
+geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubusercontent.com/787a68/Self/main/Quantumult-X/Script/Lookup.js
 
 */
 
@@ -11,12 +11,12 @@ var body = JSON.parse($response.body);
 var title = "桃花源";
 var subtitle = "复行数十步，豁然开朗";
 
-function check(inf) {
+function check(info) {
   if (body.city == body.regionName || body.city == body.country) {
-    var obj = inf.replace(/City.+?\n\n/, "");
+    var obj = info.replace(/City.+?\n\n/, "");
     return obj;
   } else {
-    return (obj = inf);
+    return (obj = info);
   }
 }
 
@@ -31,7 +31,7 @@ function check2(obj) {
 
 if (body.status == "success") {
   var ip = body.query;
-  var inf =
+  var info =
     "\nCountry: " + body.country + "\n\n" +
     "Region: " + body.regionName + "\n\n" +
     "City: " + body.city + "\n\n" +
@@ -40,6 +40,8 @@ if (body.status == "success") {
     "Organization: " + body.org + "\n\n" +
     "ISP: " + body.isp + "\n\n" +
     "AS: " + body.as;
-  var description = check2(check(inf)).replace(/\n\w+:\s\n/g, "");
+  var description = check2(check(info)).replace(/\n\w+:\s\n/g, "");
+  $done({ title, subtitle, ip, description });
+} else {
+  $done();
 }
-$done({ title, subtitle, ip, description });
