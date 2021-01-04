@@ -38,7 +38,7 @@ if (body.status == "success") {
     "City: " + body.city + "\n\n" +
     "Timezone: " + body.timezone + "\n\n" +
     "IP: " + body.query + "\n\n" +
-    "Organization: " + body.org + "\n\n" +
+    "ORG: " + body.org + "\n\n" +
     "ISP: " + body.isp + "\n\n" +
     "AS: " + body.as;
   var description = check2(check(info)).replace(/\n\w+?:\s\n/g, "");
