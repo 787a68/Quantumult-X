@@ -2,32 +2,44 @@
 节点IP信息查询
 
 [general]
-geo_location_checker=http://ip-api.com/json/?fields=4255259, https://raw.githubusercontent.com/787a68/Quantumult-X/main/Script/Lookup.js
+geo_location_checker=http://ip-api.com/json, https://raw.githubusercontent.com/787a68/Self/main/Quantumult-X/Script/Lookup.js
+geo_location_checker=http://ip-api.com/json/?zh-CN, https://raw.githubusercontent.com/787a68/Self/main/Quantumult-X/Script/Lookup.js
 
 */
 
 var body = JSON.parse($response.body);
 var title = "桃花源";
-var subtitle = "复行数十步，豁然开朗。";
-var ip = "武陵";
-var description =
-  "土地平旷，屋舍俨然，有良田、美池、桑竹之属。阡陌交通，鸡犬相闻。其中往来种作，男女衣着，悉如外人。黄发垂髫，并怡然自乐。";
+var subtitle = "复行数十步，豁然开朗";
+
+function check(inf) {
+  if (body.city == body.regionName || body.city == body.country) {
+    var obj = inf.replace(/City.+?\n\n/, "");
+    return obj;
+  } else {
+    return (obj = inf);
+  }
+}
+
+function check2(obj) {
+  if (body.regionName == body.country) {
+    var obj2 = obj.replace(/Region.+?\n\n/, "");
+    return obj2;
+  } else {
+    return (obj2 = obj);
+  }
+}
 
 if (body.status == "success") {
-  title = body.countryCode + " " + body.city;
-  subtitle = body.org;
-  ip = body.query;
-  description =
-    body.country + "\n" + 
-    body.regionName + "\n" +
-    body.query + "\n" +
-    body.isp + "\n" +
-    body.as + "\n" +
-    body.asname;
-} else if (body.status == "fail") {
-  title = body.message;
-  ip = body.query;
-  subtitle = ip;
-  description = body.message;
+  var ip = body.query;
+  var inf =
+    "\nCountry: " + body.country + "\n\n" +
+    "Region: " + body.regionName + "\n\n" +
+    "City: " + body.city + "\n\n" +
+    "Timezone: " + body.timezone + "\n\n" +
+    "IP: " + body.query + "\n\n" +
+    "Organization: " + body.org + "\n\n" +
+    "ISP: " + body.isp + "\n\n" +
+    "AS: " + body.as;
+  var description = check2(check(inf)).replace(/\n\w+:\s\n/g, "");
 }
 $done({ title, subtitle, ip, description });
