@@ -18,12 +18,12 @@ if (body.status == "success") {
     "\nCountry: " + body.country + "\n\n" +
     "Region: " + body.regionName + "\n\n" +
     "City: " + body.city + "\n\n" +
-    "Timezone: " + body.timezone + "\n\n" +
+    "TimeZone: " + body.timezone + "\n\n" +
     "IP: " + body.query + "\n\n" +
-    "ORG: " + body.org + "\n\n" +
     "ISP: " + body.isp + "\n\n" +
-    "AS: " + body.as;
-  var description = check2(obj).replace(/\n\w+?:\s\n/g, "");
+    "ORG: " + body.org + "\n\n" +
+    "BGP: " + body.as;
+  var description = check3(obj).replace(/\n\w+?:\s\n/g, "");
   $done({ title, subtitle, ip, description });
 } else {
   $done();
@@ -42,5 +42,13 @@ function check2() {
     return check(obj).replace(/Region.+?\n\n/, "");
   } else {
     return check(obj);
+  }
+}
+
+function check3() {
+  if (body.isp == body.org) {
+    return check2(obj).replace(/ISP.+?\n\n/, "");
+  } else {
+    return check2(obj);
   }
 }
