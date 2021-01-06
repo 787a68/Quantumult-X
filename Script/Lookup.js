@@ -9,30 +9,12 @@ geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubuserc
 */
 
 var body = JSON.parse($response.body);
-var title = "桃花源";
-var subtitle = "复行数十步，豁然开朗";
-
-function check(info) {
-  if (body.city == body.regionName || body.city == body.country) {
-    var obj = info.replace(/City.+?\n\n/, "");
-    return obj;
-  } else {
-    return (obj = info);
-  }
-}
-
-function check2(obj) {
-  if (body.regionName == body.country) {
-    var obj2 = obj.replace(/Region.+?\n\n/, "");
-    return obj2;
-  } else {
-    return (obj2 = obj);
-  }
-}
+var title = "桃花源";//12.5个字符
+var subtitle = "复行数十步，豁然开朗";//20个字符
 
 if (body.status == "success") {
   var ip = body.query;
-  var info =
+  var obj =
     "\nCountry: " + body.country + "\n\n" +
     "Region: " + body.regionName + "\n\n" +
     "City: " + body.city + "\n\n" +
@@ -41,8 +23,24 @@ if (body.status == "success") {
     "ORG: " + body.org + "\n\n" +
     "ISP: " + body.isp + "\n\n" +
     "AS: " + body.as;
-  var description = check2(check(info)).replace(/\n\w+?:\s\n/g, "");
+  var description = check2(obj).replace(/\n\w+?:\s\n/g, "");
   $done({ title, subtitle, ip, description });
 } else {
   $done();
+}
+
+function check() {
+  if (body.city == body.regionName || body.city == body.country) {
+    return obj.replace(/City.+?\n\n/, "");
+  } else {
+    return obj;
+  }
+}
+
+function check2() {
+  if (body.regionName == body.country) {
+    return check(obj).replace(/Region.+?\n\n/, "");
+  } else {
+    return check(obj);
+  }
 }
