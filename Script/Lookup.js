@@ -9,8 +9,8 @@ geo_location_checker=http://ip-api.com/json/?lang=zh-CN, https://raw.githubuserc
 */
 
 var body = JSON.parse($response.body);
-var title = "桃花源";//12.5个字符
-var subtitle = "复行数十步，豁然开朗";//20个字符
+var title = "桃花源"; //12.5个字符
+var subtitle = "复行数十步，豁然开朗"; //20个字符
 
 if (body.status == "success") {
   var ip = body.query;
@@ -34,14 +34,15 @@ if (body.status == "success") {
       ? "ORG: " + body.org
       : "ISP: " + body.isp + "\n\n" + "ORG: " + body.org;
 
-  var obj =
+  var description = (
     "\n" +
-    location + 
+    location +
     "TimeZone: " + body.timezone + "\n\n" +
     "IP: " + body.query + "\n\n" +
     org + "\n\n" +
-    "BGP: " + body.as;
+    "BGP: " + body.as)
+    .replace(/\n\w+?:\s(?:\n|$)/g, "")
+    .replace(/\n$/, "");
 
-  var description = obj.replace(/\n\w+?:\s\n/g, "");
   $done({ title, subtitle, ip, description });
 } else $done();
