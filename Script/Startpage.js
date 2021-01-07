@@ -11,8 +11,6 @@ hostname = www.startpage.com
 
 var header = $response.headers;
 
-cookie = header["Set-Cookie"].replace(/%2Fdefault/, "");
-
-header["Set-Cookie"] = cookie;
+header["Set-Cookie"] = header["Set-Cookie"].replace(/%2Fdefault/, "");
 
 $done({ headers: header });

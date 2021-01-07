@@ -11,8 +11,6 @@ hostname = account.wps.com, account.wps.cn
 
 var body = JSON.parse($response.body);
 
-var id = body.userid;
-
 body = {
   result: "ok",
   total_cost: 0,
@@ -48,7 +46,7 @@ body = {
       spid: "pdf_split"
     }
   ],
-  userid: 88888888,
+  userid: body.userid,
   wealth: 0,
   level: 1,
   exp: 0,
@@ -77,7 +75,5 @@ body = {
   },
   total_buy: 0
 };
-
-body.userid = id;
 
 $done({ body: JSON.stringify(body) });
