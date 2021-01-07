@@ -14,41 +14,34 @@ var subtitle = "复行数十步，豁然开朗";//20个字符
 
 if (body.status == "success") {
   var ip = body.query;
+  var city = "City: " + body.city + "\n\n";
+  var region = "Region: " + body.regionName + "\n\n";
+  var country = "Country: " + body.country + "\n\n";
+
+  var location =
+    body.country == body.regionName
+      ? body.regionName == body.city
+        ? city
+        : city + region
+      : body.country == body.city
+        ? region + city
+        : body.city == body.regionName
+          ? city + country
+          : city + region + country;
+
+  var org =
+    body.isp == body.org
+      ? "ORG: " + body.org
+      : "ISP: " + body.isp + "\n\n" + "ORG: " + body.org;
+
   var obj =
-    "\nCountry: " + body.country + "\n\n" +
-    "Region: " + body.regionName + "\n\n" +
-    "City: " + body.city + "\n\n" +
+    "\n" +
+    location + 
     "TimeZone: " + body.timezone + "\n\n" +
     "IP: " + body.query + "\n\n" +
-    "ISP: " + body.isp + "\n\n" +
-    "ORG: " + body.org + "\n\n" +
+    org + "\n\n" +
     "BGP: " + body.as;
-  var description = check3(obj).replace(/\n\w+?:\s\n/g, "");
+
+  var description = obj.replace(/\n\w+?:\s\n/g, "");
   $done({ title, subtitle, ip, description });
-} else {
-  $done();
-}
-
-function check() {
-  if (body.city == body.regionName || body.city == body.country) {
-    return obj.replace(/City.+?\n\n/, "");
-  } else {
-    return obj;
-  }
-}
-
-function check2() {
-  if (body.regionName == body.country) {
-    return check(obj).replace(/Region.+?\n\n/, "");
-  } else {
-    return check(obj);
-  }
-}
-
-function check3() {
-  if (body.isp == body.org) {
-    return check2(obj).replace(/ISP.+?\n\n/, "");
-  } else {
-    return check2(obj);
-  }
-}
+} else $done();
