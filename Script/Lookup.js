@@ -17,14 +17,13 @@ if (body.status == "success") {
   var city = "City: " + body.city + "\n\n";
   var region = "Region: " + body.regionName + "\n\n";
   var country = "Country: " + body.country + "\n\n";
-  
+
   //校验国家、地区、城市是否相同
   var location =
     body.country == body.regionName //比较国家与地区
       ? body.regionName == body.city //国家=地区，比较地区与城市
         ? city //国家=地区=城市，只显示城市
         : city + region //国家=地区!=城市，显示城市+地区
-            
       : body.country == body.city //国家!=地区，比较国家与城市
         ? region + city //国家!=地区，但国家=城市，显示地区+城市
         : body.city == body.regionName //国家!=地区，国家!=城市，比较城市与地区
@@ -37,12 +36,13 @@ if (body.status == "success") {
       : "ISP: " + body.isp + "\n\n" + "ORG: " + body.org; //不相同全显示
 
   var description = (
-    "\n" +
+    "\n" + 
     location +
     "TimeZone: " + body.timezone + "\n\n" +
     "IP: " + body.query + "\n\n" +
     org + "\n\n" +
-    "BGP: " + body.as)
+    "BGP: " + body.as
+  )
     .replace(/\n\w+?:\s(?:\n|$)/g, "") //去除没有内容的行
     .replace(/\n$/, ""); //去除最后的换行符号（如果有）
 
