@@ -1,6 +1,6 @@
 /*
 [general]
-geo_location_checker = http://ip-api.com/json/?fields=33292095&lang=zh-CN, https://raw.githubusercontent.com/787a68/Quantumult-X/main/Script/ip-api.js
+geo_location_checker = http://ip-api.com/json/?fields=33292095&lang=zh-CN, https://raw.githubusercontent.com/787a68/Quantumult-X/main/Scripts/ip-api.js
 */
 
 var body = JSON.parse($response.body);
