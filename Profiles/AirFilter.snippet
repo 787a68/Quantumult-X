@@ -1,7 +1,18 @@
-; keyword
-host-keyword, download-, Local
+; Clean
+host, sensors.ibreader.com, Clean
+host, toblog.ctobsnssdk.com, Clean
 
-; ip
+; Local
+host-keyword, blog, Local
+host-keyword, head, Local
+host-keyword, load, Local
+host-keyword, read, Local
+
+; Private Internets
+ip6-cidr, ::1/128, direct
+ip6-cidr, fc00::/7, direct
+ip6-cidr, fe80::/10, direct
+ip6-cidr, ff00::/8, direct
 ip-cidr, 10.0.0.0/8, direct
 ip-cidr, 100.64.0.0/10, direct
 ip-cidr, 127.0.0.0/8, direct
@@ -9,7 +20,3 @@ ip-cidr, 169.254.0.0/16, direct
 ip-cidr, 172.16.0.0/12, direct
 ip-cidr, 192.168.0.0/16, direct
 ip-cidr, 224.0.0.0/4, direct
-ip6-cidr, ::1/128, direct
-ip6-cidr, fc00::/7, direct
-ip6-cidr, fe80::/10, direct
-ip6-cidr, ff00::/8, direct
