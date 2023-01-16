@@ -1,27 +1,38 @@
-hostname = www.google.cn, m.client.10010.com, mp.weixin.qq.com, api.wfdata.club, creditcardapp.bankcomm.com, sg-account.wps.com, proxy-phoenix2.firigames.com, api.douban.com, api.xueqiu.com, 101.201.175.228, spclient.wg.spotify.com, list-app-m.i4.cn
+hostname = 101.201.175.228, 860746001.api.yq30.com, api.douban.com, api.taptapdada.com, api.weibo.cn, api.wfdata.club, api.xueqiu.com, care.seewo.com, creditcardapp.bankcomm.cn, list-app-m.i4.cn, m.client.10010.com, mp.weixin.qq.com, sdkapp.uve.weibo.com, sg-account.wps.com, spclient.wg.spotify.com, www.google.cn
 
 ; 302
-  ; www.google.cn
-^https:\/\/www\.google\.cn\/ url 302 https://www.google.com/
+ ; www.google.cn
+^https:\/\/www\.google\.cn url 302 https://www.google.com
 
 ; reject
-  ; list-app-m.i4.cn
-^https:\/\/list-app-m\.i4\.cn\/getopfstadinfo\.xhtml url reject-200
-  ; m.client.10010.com
-^https:\/\/m\.client\.10010\.com\/mobileService\/uniAdmsInterface\/getHomePageAd url reject-200
-  ; mp.weixin.qq.com
-^https:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url reject-200
-  ; api.wfdata.club
-^https:\/\/api\.wfdata\.club\/v2\/yesfeng\/ url reject-200
-  ; creditcardapp.bankcomm.com
-^https:\/\/creditcardapp\.bankcomm\.com\/mappweb_interface\/common\/qryLaunchAds\.do url reject-200
-  ; api.douban.com
-^https:\/\/api\.douban\.com\/v2\/app_ads\/ url reject-200
-  ; api.xueqiu.com, 101.201.175.228
+ ; 101.201.175.228, api.xueqiu.com
 ^https:\/\/api\.xueqiu\.com\/brand\/search\/v1\.json url reject-200
+ ; 860746001.api.yq30.com
+^https:\/\/860746001\.api\.yq30\.com\/jeecg-boot\/\/sysBarrageAdvertising url reject-200
+ ; api.douban.com
+^https:\/\/api\.douban\.com\/v2\/app_ads url reject-200
+ ; api.taptapdada.com
+^https:\/\/api\.taptapdada\.com\/startup-logo url reject-200
+ ; api.weibo.cn
+^https:\/\/api\.weibo\.cn\/2\/ad url reject-200
+ ; api.wfdata.club
+^https:\/\/api\.wfdata\.club\/v2\/yesfeng url reject-200
+ ; care.seewo.com
+^https:\/\/care\.seewo\.com\/easicare\/manage\/main\/dialog url reject-200
+^https:\/\/care\.seewo\.com\/easicare\/v2\/manage\/launch url reject-200
+ ; creditcardapp.bankcomm.cn
+^https:\/\/creditcardapp\.bankcomm\.cn\/mappweb_interface\/common\/qry url reject-200
+ ; list-app-m.i4.cn
+^https:\/\/list-app-m\.i4\.cn\/getopfstadinfo url reject-200
+ ; m.client.10010.com
+^https:\/\/m\.client\.10010\.com\/mobileService\/uniAdmsInterface\/getHomePageAd url reject-200
+ ; mp.weixin.qq.com
+^https:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url reject-200
+ ; sdkapp.uve.weibo.com
+^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad url reject-200
 
 ; script
-  ; sg-account.wps.com
+ ; sg-account.wps.com
 ^https:\/\/sg-account\.wps\.com:443\/api\/users\/ url script-response-body https://raw.githubusercontent.com/787a68/Quantumult-X/main/Scripts/wps.js
-  ; spclient.wg.spotify.com
+ ; spclient.wg.spotify.com
 ^https:\/\/spclient\.wg\.spotify\.com\/(?>bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ url script-response-body https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js

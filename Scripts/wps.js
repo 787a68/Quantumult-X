@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https?+:\/\/sg-account\.wps\.com:443\/api\/users\/url script-response-body https://raw.githubusercontent.com/787a68/Quantumult-X/main/Scripts/wps.js
+^https:\/\/sg-account\.wps\.com:443\/api\/users\/url script-response-body https://raw.githubusercontent.com/787a68/Quantumult-X/main/Scripts/wps.js
 
 [mitm]
 hostname = sg-account.wps.com
