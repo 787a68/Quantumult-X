@@ -1,0 +1,58 @@
+hostname = 860746001.api.yq30.com, api.douban.com, api.weibo.cn, event.uniqlo.cn, m.client.10010.com, m.ctrip.com, mp.weixin.qq.com, sdkapp.uve.weibo.com, sg-account.wps.com, stocks-data-service.apple.com, stocks-data-service.apple.com, www.bing.com, www.google.cn, wx.17u.cn, creditcardapp.bankcomm.cn, edith.xiaohongshu.com, list-app-m.i4.cn, www.xiaohongshu.com
+
+
+// General
+/// www.bing.com
+^https:\/\/www\.bing\.com\/search url request-header User-Agent:.+ request-header User-Agent: Mozilla/5.0 (iphone; Intel Mac OS X 10_12_6) AppleWebKit/537.36 Chrome/110.0 Safari/537.36 Edg/110.0
+/// www.google.cn
+^https?:\/\/www\.google\.cn\/search\?q= url 302 https://www.google.com/search?lr=lang_zh-CN%7Clang_zh-TW&q=
+
+// Bank of Communications
+/// creditcardapp.bankcomm.cn
+^https:\/\/creditcardapp\.bankcomm\.cn\/mappweb_interface\/common\/qry url reject
+
+// Xingin Information Technology (Shanghai) Co., Ltd
+/// edith.xiaohongshu.com
+^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash url reject
+/// www.xiaohongshu.com
+^https:\/\/www\.xiaohongshu\.com\/api\/sns\/v1\/ads url reject
+
+// SHENZHEN WAIP Infomation Technology Co., Ltd.
+/// list-app-m.i4.cn
+^https:\/\/list-app-m\.i4\.cn\/getopfstadinfo url reject
+
+// Apple Distribution International
+/// stocks-data-service.apple.com
+^https:\/\/stocks-data-service\.apple\.com\/api\/v1\/(?:quote|news)\?language=zh-Hans&region=CN url request-header region=CN request-header region=HK
+
+// Beijing Weimeng Internet Technology Co., Ltd.
+/// api.weibo.cn
+^https:\/\/api\.weibo\.cn\/2\/ad url reject
+/// sdkapp.uve.weibo.com
+^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad url reject
+
+// China United Network Communications Corporation Limited
+/// m.client.10010.com
+^https:\/\/m\.client\.10010\.com\/uniAdmsInterface\/getHomePageAd url reject
+
+// Douban Inc
+/// api.douban.com
+^https:\/\/api\.douban\.com\/v2\/app_ads url reject
+
+// KINGSOFT OFFICE SOFTWARE CORPORATION LIMITED
+/// sg-account.wps.com
+
+
+// Tencent Technology (Shenzhen) Company Limited
+/// mp.weixin.qq.com
+^https:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad url reject
+
+// Wechat Mini Program
+///gh_0a00573ff7cf wx.17u.cn
+^https:\/\/wx\.17u\.cn\/xcxhomeapi\/home\/screen url reject
+///gh_36ada103ba97 m.ctrip.com
+^https:\/\/m\.ctrip\.com\/restapi\/soa2\/13916\/tripAds url reject
+///gh_824617e099e2 event.uniqlo.cn
+^https:\/\/event\.uniqlo\.cn\/uniqlo_new_cms\/api\/welcome\/index url reject
+///gh_ac32081bac0f 860746001.api.yq30.com
+^https:\/\/860746001\.api\.yq30\.com\/jeecg-boot\/\/sysBarrageAdvertising url reject
