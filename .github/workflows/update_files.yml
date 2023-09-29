@@ -4,7 +4,10 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * 0"
-      
+  push:
+    branches:
+      - main
+
 jobs:
   update_files:
     runs-on: ubuntu-latest
@@ -13,31 +16,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Download and modify gfw.txt
+      - name: Modify and rename files
         run: |
           curl -o gfw.txt https://raw.githubusercontent.com/Loyalsoldier/surge-rules/release/ruleset/gfw.txt
-          sed -E 's/DOMAIN-SUFFIX,(.+)/host-suffix, \1, proxy/' gfw.txt > GFW.snippet
-
-      - name: Verify gfw.txt generation
-        run: |
-          ls GFW.snippet
-
-      - name: Download and modify anti-ad-surge.txt
-        run: |
           curl -o anti-ad-surge.txt https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-surge.txt
-          sed -E 's/DOMAIN-SUFFIX,(.+)/host-suffix, \1, reject/' anti-ad-surge.txt > antiAD.snippet
-
-      - name: Verify anti-ad-surge.txt generation
-        run: |
-          ls antiAD.snippet
-
-      - name: Download and rename Country.mmdb
-        run: |
           curl -o GeoIP.mmdb https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb
 
-      - name: Verify Country.mmdb generation
-        run: |
-          ls GeoIP.mmdb
+          sed -i 's/DOMAIN-SUFFIX,\(.*\)/host-suffix, \1, proxy/' gfw.txt
+          sed -i 's/DOMAIN-SUFFIX,\(.*\)/host-suffix, \1, reject/' anti-ad-surge.txt
+
+          mv gfw.txt GFW.snippet
+          mv anti-ad-surge.txt antiAd.snippet
+
+      - name: Verify files generation
+        run: ls GFW.snippet antiAd.snippet GeoIP.mmdb
 
       - name: Configure Git
         run: |
