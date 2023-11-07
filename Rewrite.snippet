@@ -1,29 +1,15 @@
-hostname = 860746001.api.yq30.com, api.douban.com, api.weibo.cn, event.uniqlo.cn, m.client.10010.com, m.ctrip.com, mp.weixin.qq.com, sdkapp.uve.weibo.com, sg-account.wps.com, stocks-data-service.apple.com, stocks-data-service.apple.com, www.bing.com, www.google.cn, wx.17u.cn, creditcardapp.bankcomm.cn, edith.xiaohongshu.com, list-app-m.i4.cn, www.xiaohongshu.com
+hostname = 860746001.api.yq30.com, api.douban.com, api.weibo.cn, event.uniqlo.cn, m.client.10010.com, m.ctrip.com, mp.weixin.qq.com, sdkapp.uve.weibo.com, www.bing.com, www.google.cn, wx.17u.cn, list-app-m.i4.cn
 
 
 // General
-/// www.bing.com
-^https:\/\/www\.bing\.com\/search url request-header User-Agent:.+ request-header User-Agent: Mozilla/5.0 (iphone; Intel Mac OS X 10_12_6) AppleWebKit/537.36 Chrome/110.0 Safari/537.36 Edg/110.0
 /// www.google.cn
 ^https?:\/\/www\.google\.cn\/search\?q= url 302 https://www.google.com/search?lr=lang_zh-CN%7Clang_zh-TW&q=
 
-// Bank of Communications
-/// creditcardapp.bankcomm.cn
-^https:\/\/creditcardapp\.bankcomm\.cn\/mappweb_interface\/common\/qry url reject
-
-// Xingin Information Technology (Shanghai) Co., Ltd
-/// edith.xiaohongshu.com
-^https:\/\/edith\.xiaohongshu\.com\/api\/sns\/v2\/system_service\/splash url reject
-/// www.xiaohongshu.com
-^https:\/\/www\.xiaohongshu\.com\/api\/sns\/v1\/ads url reject
 
 // SHENZHEN WAIP Infomation Technology Co., Ltd.
 /// list-app-m.i4.cn
 ^https:\/\/list-app-m\.i4\.cn\/getopfstadinfo url reject
 
-// Apple Distribution International
-/// stocks-data-service.apple.com
-^https:\/\/stocks-data-service\.apple\.com\/api\/v1\/(?:quote|news)\?language=zh-Hans&region=CN url request-header region=CN request-header region=HK
 
 // Beijing Weimeng Internet Technology Co., Ltd.
 /// api.weibo.cn
@@ -39,8 +25,6 @@ hostname = 860746001.api.yq30.com, api.douban.com, api.weibo.cn, event.uniqlo.cn
 /// api.douban.com
 ^https:\/\/api\.douban\.com\/v2\/app_ads url reject
 
-// KINGSOFT OFFICE SOFTWARE CORPORATION LIMITED
-/// sg-account.wps.com
 
 
 // Tencent Technology (Shenzhen) Company Limited
